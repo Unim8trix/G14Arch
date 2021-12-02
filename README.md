@@ -412,7 +412,7 @@ systemctl --user start asus-notify
 
 
 
-For more fine-tuning read the [Arch Linux Wiki](https://wiki.archlinux.org/title/ASUS_GA401I#ASUSCtl) or the [Repository from Luke](https://gitlab.com/asus-linux/asusctl)
+For more fine-tuning read the [asusctl Manual](https://asus-linux.org/asusctl/)
 
 ### Setup Bluetooth
 
