@@ -418,6 +418,6 @@ For more fine-tuning read the [asusctl Manual](https://asus-linux.org/asusctl/)
 Install required bluetooth modules and add your user to the group `lp`
 ```bash
 sudo pacman -Sy bluez bluez-utils blueman
-sudo usermod -G lp {MYUSERNAME}
+sudo usermod -a -G lp {MYUSERNAME}
 sudo systemctl enable --now bluethooth.service
 ```
