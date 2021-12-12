@@ -212,7 +212,7 @@ systemctl enable --now systemd-timesyncd.service
 First create a new local user and point it to bash
 
 ```bash
-useradd -m -g users -G wheel,power,audio -s /bin/bash {MYUSERNAME}
+useradd -m -g users -G wheel,lp,power,audio -s /bin/bash {MYUSERNAME}
 passwd {MYUSERNAME}
 ```
 
@@ -417,6 +417,5 @@ For more fine-tuning read the [asusctl Manual](https://asus-linux.org/asusctl/)
 Install required bluetooth modules and add your user to the group `lp`
 ```bash
 sudo pacman -Sy bluez bluez-utils blueman
-sudo usermod -a -G lp {MYUSERNAME}
 sudo systemctl enable --now bluethooth.service
 ```
