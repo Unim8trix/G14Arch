@@ -73,19 +73,19 @@ mkdir /mnt/@/swap
 Just unmount with `umount /mnt/` and remount with subvolumes
 
 ```bash
-mount -o noatime,compress=zstd,space_cache,commit=120,subvol=@ /dev/mapper/luks /mnt
+mount -o noatime,compress=zstd,commit=120,subvol=@ /dev/mapper/luks /mnt
 mkdir -p /mnt/boot
 mkdir -p /mnt/home
 mkdir -p /mnt/.snapshots
 mkdir -p /mnt/btrfs
 
-mount -o noatime,compress=zstd,space_cache,commit=120,subvol=@home /dev/mapper/luks /mnt/home/
-mount -o noatime,compress=zstd,space_cache,commit=120,subvol=@snapshots /dev/mapper/luks /mnt/.snapshots/
-mount -o noatime,space_cache,commit=120,subvol=@swap /dev/mapper/luks /mnt/swap/
+mount -o noatime,compress=zstd,commit=120,subvol=@home /dev/mapper/luks /mnt/home/
+mount -o noatime,compress=zstd,commit=120,subvol=@snapshots /dev/mapper/luks /mnt/.snapshots/
+mount -o noatime,commit=120,subvol=@swap /dev/mapper/luks /mnt/swap/
 
 mount /dev/nvme0n1p1 /mnt/boot/
 
-mount -o noatime,compress=zstd,space_cache,commit=120,subvolid=5 /dev/mapper/luks /mnt/btrfs/
+mount -o noatime,compress=zstd,commit=120,subvolid=5 /dev/mapper/luks /mnt/btrfs/
 ```
 
 
