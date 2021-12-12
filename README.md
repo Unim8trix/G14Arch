@@ -195,8 +195,7 @@ Now its time to `reboot` into the new system!
 Configure WiFi Connection.
 
 ```bash
-systemctl enable NetworkManager
-systemctl start NetworkManager
+systemctl enable --now NetworkManager
 nmcli device wifi connect "{YOURSSID}" password "{SSIDPASSWORD}"
 ```
 
