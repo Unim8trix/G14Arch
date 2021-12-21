@@ -29,7 +29,7 @@ Update System clock with `timedatectl set-ntp true`
 * Format Disk using `gdisk /dev/nvme0n1` with this simple layout:
 
 	* `o` for new partition table
-	* `n,1,<ENTER>,+512M,ef00` for EFI Boot
+	* `n,1,<ENTER>,+1024M,ef00` for EFI Boot
 	* `n,2,<ENTER>,<ENTER>,8300` for the linux partition
 	* `w` to save layout
 
@@ -113,7 +113,6 @@ echo LANGUAGE=de_DE >> /etc/locale.conf
 echo KEYMAP=de-latin1-nodeadkeys > /etc/vconsole.conf
 echo FONT=lat9w-16 >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
-hwclock --systohc
 ```
 
 Modify `nano /etc/hosts` with these entries. For static IPs, remove 127.0.1.1
@@ -290,7 +289,7 @@ Now each time pacman executes, it launches the `autosnap`script which takes a sn
 Install xorg and xfce4 packages
 
 ```bash
-sudo pacman -Sy xorg xfce4 xfce4-goodies xf86-input-synaptics gvfs xdg-user-dirs ttf-dejavu pulseaudio network-manager-applet firefox-i18n-de
+sudo pacman -Sy xorg xfce4 xfce4-goodies xf86-input-synaptics gvfs xdg-user-dirs ttf-dejavu pulseaudio network-manager-applet firefox-i18n-de git git-lfs curl wget
 
 sudo localectl set-x11-keymap de pc105 deadgraveacute
 xdg-user-dirs-update
@@ -311,7 +310,7 @@ Reboot and login to your new Desktop. For Theming i followed this realy nice how
 I like to use oh-my-zsh with Powerlevel10K theme
 
 ```bash
-sudo pacman -Sy git git-lfs curl wget zsh zsh-completions
+sudo pacman -Sy zsh zsh-completions
 chsh -s /bin/zsh # (relogin to activate)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cd .fonts
