@@ -334,7 +334,7 @@ git clone https://aur.archlinux.org/plymouth-git.git
 makepkg -is
 ```
 
-Now modify the Hooks for the Initramfs, Plymouth must be right after "base udev". Delete encrypt hook, it will be replaced by plymouth-encrypt
+Now modify the Hooks for the Initramfs using `/etc/mkinitcpio.conf`, Plymouth must be right after "base udev". Delete encrypt hook, it will be replaced by plymouth-encrypt
 
 ```bash
 HOOKS="base udev plymouth plymouth-encrypt autodetect modconf block btrfs filesystems keyboard fsck
@@ -418,3 +418,27 @@ Install required bluetooth modules and add your user to the group `lp`
 sudo pacman -Sy bluez bluez-utils blueman
 sudo systemctl enable --now bluethooth.service
 ```
+
+
+
+### Enable Autologin
+
+Since iam running full disc encryption, i would like to enable autologin to my X-Session. Open `/etc/lightdm/lightdm.conf` and add theese under `[Seat:*]`
+
+```bash
+pam-service=lightdm
+pam-autologin-service=lightdm-autologin
+autologin-user={MYUSERNAME}
+autologin-user-timeout=0
+session-wrapper=/etc/lightdm/Xsession
+greeter-session=lightdm-greeter
+
+```
+
+Now create the group autologin and add your user
+
+```bash
+sudo groupadd -r autologin
+sudo gpasswd -a {MYUSERNAME} autologin
+```
+
