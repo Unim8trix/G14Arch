@@ -364,8 +364,10 @@ For XFCE4 Theming you could check this nice [Youtube Video from Linux Scoop](htt
 
 ### Install latest nvidia driver
 
+I'am going to use the nvidia-dkms package, as i will use a custom kernel
+
 ```bash
-sudo pacman -Sy nvidia nvidia-dkms nvidia-settings acpi_call linux-headers
+sudo pacman -Sy nvidia-dkms nvidia-settings nvidia-prime acpi_call linux-headers
 ```
 
 Reboot after install.
